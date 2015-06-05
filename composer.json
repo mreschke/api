@@ -1,0 +1,25 @@
+{
+	"name": "mreschke/api",
+	"type": "library",
+	"description": "Mreschke HMAC API Client and Server Library",
+	"keywords": ["mreschke", "api", "hmap"],
+	"homepage": "http://github.com/mreschke/api",
+	"license": "MIT",
+	"support": {
+		"issues": "https://github.com/mreschke/api/issues"
+	},
+	"authors": [
+		{
+			"name": "Matthew Reschke",
+			"email": "mail@mreschke.com",
+			"homepage": "http://mreschke.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Mreschke\\Api\\": ""
+		}
+	}
+}
+
+
