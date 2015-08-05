@@ -56,6 +56,7 @@ class Client
 		
 		$client = new Guzzle();
 		$response = $client->$method($url, $options);
+		#dd((string)$response->getBody());
 		return (string) $response->getBody();
 	}
 

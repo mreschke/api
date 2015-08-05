@@ -30,7 +30,7 @@ class Server
 					$authHeader = substr($authHeader, 4);
 					list($key, $timestamp, $mac) = explode(':', $authHeader);
 
-					// Check timestamp is within buffer for replay attacks
+					// Check timestamp is within buffer to prevent replay attacks
 					if (time() <= $timestamp + 60) {
 						
 						// Get users secret by key
@@ -38,7 +38,9 @@ class Server
 
 						$verify = $this->api->getMacSignature($method, $url, $key, $client['secret'], $timestamp);
 
-						return ($mac === $verify);
+						if ($mac === $verify) {
+							return $client;
+						}
 					}
 				}
 			}
