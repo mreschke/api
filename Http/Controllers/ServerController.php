@@ -5,27 +5,26 @@ use Mreschke\Helpers\Guest;
 use Mreschke\Api\ApiInterface;
 use Laravel\Lumen\Routing\Controller as Controller;
 
-class ServerController extends Controller {
+class ServerController extends Controller
+{
+    protected $api;
 
-	protected $api;
+    public function __construct(ApiInterface $api)
+    {
+        $this->api = $api;
+    }
 
-	public function __construct(ApiInterface $api)
-	{
-		$this->api = $api;
-	}
+    /**
+     * Show the readme
+     * @return Response
+     */
+    public function index()
+    {
+        $browser = Guest::getBrowser();
+        $isCurl = preg_match("/curl/i", $browser);
 
-	/**
-	 * Show the readme
-	 * @return Response
-	 */
-	public function index()
-	{
-		$browser = Guest::getBrowser();
-		$isCurl = preg_match("/curl/i", $browser);
-
-		#$content = $this->api->readme();
-		#return $isCurl ? $content : view('api::server.index', compact('content'));
-		return "welcome to api";
-	}
-
+        #$content = $this->api->readme();
+        #return $isCurl ? $content : view('api::server.index', compact('content'));
+        return "welcome to api";
+    }
 }
